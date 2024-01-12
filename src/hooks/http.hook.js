@@ -6,6 +6,7 @@ export const useHttp = () => {
     const request = useCallback(async (url, method = 'GET', body = null, headers = {'Content-Type': 'application/json'}) => {
 
         // setProcess('loading');
+        console.log('request', method);
 
         try {
             const response = await fetch(url, {method, body, headers});
