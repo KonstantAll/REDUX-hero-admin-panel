@@ -2,9 +2,8 @@ const initialState = {
     heroes: [],
     heroesLoadingStatus: 'idle',
     filters: [],
-    filtersLoadingStatus:'idle',
-    currentFilter:'all',
-    filteredHeroes: []
+    filtersLoadingStatus: 'idle',
+    activeFilter: 'all'
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,33 +17,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 heroes: action.payload,
-                heroesLoadingStatus: 'idle',
-                filteredHeroes: state.currentFilter === 'all' ?
-                    action.payload :
-                    action.payload.filter(item => item.element === state.currentFilter)
+                heroesLoadingStatus: 'idle'
             }
         case 'HEROES_FETCHING_ERROR':
             return {
                 ...state,
                 heroesLoadingStatus: 'error'
-            }
-        case 'HERO_DELETE':
-            const newHeroList = state.heroes.filter((hero) => hero.id !== action.payload)
-            return {
-                ...state,
-                heroes: newHeroList,
-                filteredHeroes: state.currentFilter === 'all' ?
-                    newHeroList:
-                    newHeroList.filter(hero => hero.element === state.currentFilter)
-            }
-        case 'HERO_ADD':
-            const newCreatedHeroesList = [...state.heroes, action.payload];
-            return {
-                ...state,
-                heroes: newCreatedHeroesList,
-                filteredHeroes: state.currentFilter === 'all' ?
-                    newCreatedHeroesList:
-                    newCreatedHeroesList.filter(hero => hero.element === state.currentFilter)
             }
         case 'FILTERS_FETCHING':
             return {
@@ -63,16 +41,23 @@ const reducer = (state = initialState, action) => {
                 filtersLoadingStatus: 'error'
             }
         case 'ACTIVE_FILTER_CHANGED':
-            console.log('change filter', action.payload)
             return {
                 ...state,
-                currentFilter: action.payload,
-                filteredHeroes: state.currentFilter === 'all' ?
-                    state.heroes:
-                    state.heroes.filter(hero => {
-                        console.log('state.currentFilter',state.currentFilter)
-                        return hero.element === state.currentFilter
-                    })
+                activeFilter: action.payload,
+            }
+        // Самая сложная часть - это показывать новые элементы по фильтрам
+        // при создании или удалении
+        case 'HERO_CREATED':
+            return {
+                ...state,
+                heroes: [...state.heroes, action.payload]
+
+            }
+        case 'HERO_DELETED': 
+            // Формируем новый массив
+            return {
+                ...state,
+                heroes: state.heroes.filter(item => item.id !== action.payload),
             }
         default: return state
     }

@@ -13,48 +13,42 @@
       "element": "wind"
     },
     {
-      "id": "99930e94-43c3-488b-8ec0-eb9245fc3167",
-      "name": "Kostiantyn Alieksandrov",
-      "description": "dsg",
+      "id": 3,
+      "name": "Морской герой",
+      "description": "Как аквамен, но не из DC",
       "element": "water"
     },
     {
-      "id": "1572e315-019b-409b-b2a4-71cf880ce417",
-      "name": "фіва",
-      "description": "ві",
+      "id": "f07134e4-be24-4c2d-93af-0301451e17ba",
+      "name": "Kostiantyn Alieksandrov",
+      "description": "dfgd",
       "element": "fire"
-    },
-    {
-      "id": "761f2753-84dd-451c-91d0-18331ed5532e",
-      "name": "ывы",
-      "description": "фыв",
-      "element": "wind"
     }
   ],
   "filters": [
     {
       "name": "all",
-      "value": "Все",
+      "label": "Все",
       "className": "btn-outline-dark"
     },
     {
       "name": "fire",
-      "value": "Огонь",
+      "label": "Огонь",
       "className": "btn-danger"
     },
     {
       "name": "water",
-      "value": "Вода",
+      "label": "Вода",
       "className": "btn-primary"
     },
     {
       "name": "wind",
-      "value": "Ветер",
+      "label": "Ветер",
       "className": "btn-success"
     },
     {
       "name": "earth",
-      "value": "Земля",
+      "label": "Земля",
       "className": "btn-secondary"
     }
   ]

@@ -17,30 +17,16 @@ export const heroesFetchingError = () => {
     }
 }
 
-export const heroDelete = (id) => {
-    return {
-        type: 'HERO_DELETE',
-        payload: id
-    }
-}
-
-export const heroAdd = (hero) => {
-    return {
-        type: 'HERO_ADD',
-        payload: hero
-    }
-}
-
 export const filtersFetching = () => {
     return {
         type: 'FILTERS_FETCHING'
     }
 }
 
-export const filtersFetched = (heroes) => {
+export const filtersFetched = (filters) => {
     return {
         type: 'FILTERS_FETCHED',
-        payload: heroes
+        payload: filters
     }
 }
 
@@ -50,9 +36,23 @@ export const filtersFetchingError = () => {
     }
 }
 
-export const activeFilterChanged = (name) => {
+export const activeFilterChanged = (filter) => {
     return {
         type: 'ACTIVE_FILTER_CHANGED',
-        payload: name,
+        payload: filter
+    }
+}
+
+export const heroCreated = (hero) => {
+    return {
+        type: 'HERO_CREATED',
+        payload: hero
+    }
+}
+
+export const heroDeleted = (id) => {
+    return {
+        type: 'HERO_DELETED',
+        payload: id
     }
 }
