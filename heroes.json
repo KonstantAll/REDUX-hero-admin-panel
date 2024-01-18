@@ -17,12 +17,6 @@
       "name": "Морской герой",
       "description": "Как аквамен, но не из DC",
       "element": "water"
-    },
-    {
-      "id": "f07134e4-be24-4c2d-93af-0301451e17ba",
-      "name": "Kostiantyn Alieksandrov",
-      "description": "dfgd",
-      "element": "fire"
     }
   ],
   "filters": [
