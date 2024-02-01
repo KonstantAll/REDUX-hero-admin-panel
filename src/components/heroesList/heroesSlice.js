@@ -9,9 +9,7 @@ const initialState = {
 export const fetchHeroes = createAsyncThunk(
     'heroes/fetchHeroes',
     () => {
-        console.log('hello')
         const {request} = useHttp();
-        console.log('request',request)
         return request("http://localhost:3001/heroes")
     }
 
@@ -21,18 +19,6 @@ const heroesSlice = createSlice({
     name: 'heroes',
     initialState,
     reducers: {
-        // Так как они использовались только в  fetch экшнах, а мы их теперь реализовали в extraReducers, то эти
-        // action creators можно теперь удалить
-        // heroesFetching: state => {
-        //     state.heroesLoadingStatus = 'loading';
-        // },
-        // heroesFetched: (state, action) => {
-        //     state.heroesLoadingStatus = 'idle';
-        //     state.heroes = action.payload;
-        // },
-        // heroesFetchingError: state => {
-        //     state.heroesLoadingStatus = 'error';
-        // },
         heroCreated: (state, action) => {
             state.heroes.push(action.payload);
         },
@@ -60,9 +46,6 @@ const {actions, reducer} = heroesSlice;
 
 export default reducer;
 export const {
-    heroesFetched,
-    heroesFetching,
-    heroesFetchingError,
     heroCreated,
     heroDeleted
 } = actions
